@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 function AppointmentManager() {
   const [appointments, setAppointments] = useState([]); // List of appointments
   const [maxAppointments, setMaxAppointments] = useState(5); // Max limit of appointments
@@ -57,106 +56,109 @@ function AppointmentManager() {
   };
 
   return (
-    <div className="w-full container mx-auto my-8 p-4 bg-white shadow-md rounded-md">
-      <h2 className="text-2xl font-bold text-center mt-4 mb-8">Manage Appointments</h2>
-      <table className="w-full text-left border-collapse mt-5">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone No</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input
-                type="text"
-                placeholder="Enter First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="p-2 border border-gray-300 rounded mb-2"
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                placeholder="Enter Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className="p-2 border border-gray-300 rounded mb-2"
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                placeholder="Enter Phone No"
-                value={phoneNo}
-                onChange={(e) => setPhoneNo(e.target.value)}
-                className="p-2 border border-gray-300 rounded mb-2"
-              />
-            </td>
-            <td>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="p-2 border border-gray-300 rounded mb-2"
-              />
-            </td>
-            <td>
-              <input
-                type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-                className="p-2 border border-gray-300 rounded mb-2"
-              />
-            </td>
-            <td>
-              <button
-                className="w-full bg-blue-700 text-white p-2 rounded hover:bg-blue-900 transition"
-                onClick={bookAppointment}
-              >
-                Book Appointment
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="w-full max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Manage Appointments</h2>
+
+      <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+        <table className="w-full mb-4">
+          <thead>
+            <tr>
+              <th className="text-left py-2">First Name</th>
+              <th className="text-left py-2">Last Name</th>
+              <th className="text-left py-2">Phone No</th>
+              <th className="text-left py-2">Date</th>
+              <th className="text-left py-2">Time</th>
+              <th className="py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white">
+              <td className="py-2">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md w-full"
+                />
+              </td>
+              <td className="py-2">
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md w-full"
+                />
+              </td>
+              <td className="py-2">
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  value={phoneNo}
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md w-full"
+                />
+              </td>
+              <td className="py-2">
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md w-full"
+                />
+              </td>
+              <td className="py-2">
+                <input
+                  type="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md w-full"
+                />
+              </td>
+              <td className="py-2">
+                <button
+                  className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                  onClick={bookAppointment}
+                >
+                  Book
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       {appointments.length > 0 ? (
-        <div className="overflow-x-auto mt-5">
-          <table className="w-full text-left border-collapse border border-gray-300">
-            <thead className="bg-gray-100">
+        <div className="overflow-x-auto mt-6">
+          <table className="w-full text-left border-collapse bg-white shadow-md rounded-md">
+            <thead className="bg-gray-200">
               <tr>
-                <th className="border border-gray-300 px-4 py-2">First Name</th>
-                <th className="border border-gray-300 px-4 py-2">Last Name</th>
-                <th className="border border-gray-300 px-4 py-2">Phone No</th>
-                <th className="border border-gray-300 px-4 py-2">Date</th>
-                <th className="border border-gray-300 px-4 py-2">Time</th>
-                <th className="border border-gray-300 px-4 py-2">Actions</th>
+                <th className="py-3 px-4">First Name</th>
+                <th className="py-3 px-4">Last Name</th>
+                <th className="py-3 px-4">Phone No</th>
+                <th className="py-3 px-4">Date</th>
+                <th className="py-3 px-4">Time</th>
+                <th className="py-3 px-4">Actions</th>
               </tr>
             </thead>
             <tbody>
               {appointments.map((appt) => (
-                <tr key={appt.id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-2">{appt.firstName}</td>
-                  <td className="border border-gray-300 px-4 py-2">{appt.lastName}</td>
-                  <td className="border border-gray-300 px-4 py-2">{appt.phoneNo}</td>
-                  <td className="border border-gray-300 px-4 py-2">{appt.date}</td>
-                  <td className="border border-gray-300 px-4 py-2">{appt.time}</td>
-                  <td className="border border-gray-300 px-4 py-2 flex gap-4">
+                <tr key={appt.id} className="hover:bg-gray-100 transition">
+                  <td className="py-2 px-4">{appt.firstName}</td>
+                  <td className="py-2 px-4">{appt.lastName}</td>
+                  <td className="py-2 px-4">{appt.phoneNo}</td>
+                  <td className="py-2 px-4">{appt.date}</td>
+                  <td className="py-2 px-4">{appt.time}</td>
+                  <td className="py-2 px-4 flex space-x-2">
                     <button
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                      className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
                       onClick={() => cancelAppointment(appt.id)}
                     >
                       Cancel
                     </button>
                     <button
-                      className="ml-2 bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-900 transition"
+                      className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
                       onClick={() => rescheduleAppointment(appt.id)}
                     >
                       Reschedule
@@ -168,27 +170,24 @@ function AppointmentManager() {
           </table>
         </div>
       ) : (
-        <p className="text-center mt-5">No appointments booked</p>
+        <p className="text-center text-gray-500 mt-5">No appointments booked</p>
       )}
 
-
-      {/* Reschedule Inputs */}
-      <div className="mt-4">
-        <h3 className="text-lg font-semibold">Reschedule Appointment</h3>
-        <div className="flex space-x-4 mt-2">
+      {/* Reschedule Section */}
+      <div className="mt-8">
+        <h3 className="text-lg font-semibold mb-2">Reschedule Appointment</h3>
+        <div className="flex gap-4">
           <input
             type="date"
             value={rescheduleDate}
             onChange={(e) => setRescheduleDate(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-            placeholder="New Date"
+            className="p-2 border border-gray-300 rounded-md w-full"
           />
           <input
             type="time"
             value={rescheduleTime}
             onChange={(e) => setRescheduleTime(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-            placeholder="New Time"
+            className="p-2 border border-gray-300 rounded-md w-full"
           />
         </div>
       </div>
@@ -196,10 +195,8 @@ function AppointmentManager() {
   );
 }
 
-
-
-
 export default AppointmentManager;
+
 
 
 
